@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PorkerHands
+namespace PorkerHands.HandAnalyzers
 {
     public class PairAnalyzer : IHandStrengthAnalyzer
     {

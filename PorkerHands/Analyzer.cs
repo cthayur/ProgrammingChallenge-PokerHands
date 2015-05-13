@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PorkerHands.Comparers;
+using PorkerHands.HandAnalyzers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,10 +44,10 @@ namespace PorkerHands
         private void SetUpAnalyzers()
         {
             analyzers = new List<IHandStrengthAnalyzer>();
-            analyzers.Add(new StraightFlushAnalyzer(new FlushAnalyzer(), new StraightAnalyzer(), new HighCardTieComparer()));
+            analyzers.Add(new StraightFlushAnalyzer(new FlushAnalyzer(new HighCardHandTieComparer()), new StraightAnalyzer(), new HighCardTieComparer()));
             analyzers.Add(new FourOfAKindAnalyzer(new HighCardTieComparer()));
             analyzers.Add(new FullHouseAnalyzer(new ThreeOfAKindAnalyzer(), new PairAnalyzer(), new HighCardTieComparer()));
-            analyzers.Add(new FlushAnalyzer());
+            analyzers.Add(new FlushAnalyzer(new HighCardHandTieComparer()));
             analyzers.Add(new StraightAnalyzer());
             analyzers.Add(new ThreeOfAKindAnalyzer());
             analyzers.Add(new TwoPairAnalyzer(new PairAnalyzer()));

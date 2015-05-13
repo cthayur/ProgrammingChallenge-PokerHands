@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PorkerHands.Comparers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PorkerHands
+namespace PorkerHands.HandAnalyzers
 {
     public class FourOfAKindAnalyzer : IHandStrengthAnalyzer
     {

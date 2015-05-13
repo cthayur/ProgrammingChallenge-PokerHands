@@ -43,21 +43,24 @@
   <ItemGroup>
     <Compile Include="Analyzer.cs" />
     <Compile Include="Card.cs" />
-    <Compile Include="FlushAnalyzer.cs" />
-    <Compile Include="FourOfAKindAnalyzer.cs" />
-    <Compile Include="FullHouseAnalyzer.cs" />
+    <Compile Include="Comparers\HighCardHandTieComparer.cs" />
+    <Compile Include="HandAnalyzers\FlushAnalyzer.cs" />
+    <Compile Include="HandAnalyzers\FourOfAKindAnalyzer.cs" />
+    <Compile Include="HandAnalyzers\FullHouseAnalyzer.cs" />
     <Compile Include="HandRankResult.cs" />
-    <Compile Include="HighCardAnalyzer.cs" />
-    <Compile Include="PairAnalyzer.cs" />
+    <Compile Include="HandAnalyzers\HighCardAnalyzer.cs" />
+    <Compile Include="Comparers\HighCardTieComparer.cs" />
+    <Compile Include="Comparers\IHandTieBreakComparer.cs" />
+    <Compile Include="HandAnalyzers\PairAnalyzer.cs" />
     <Compile Include="StaticObjects.cs" />
-    <Compile Include="IHandStrengthAnalyzer.cs" />
+    <Compile Include="HandAnalyzers\IHandStrengthAnalyzer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StraightAnalyzer.cs" />
-    <Compile Include="StraightFlushAnalyzer.cs" />
+    <Compile Include="HandAnalyzers\StraightAnalyzer.cs" />
+    <Compile Include="HandAnalyzers\StraightFlushAnalyzer.cs" />
     <Compile Include="Suits.cs" />
-    <Compile Include="ThreeOfAKindAnalyzer.cs" />
-    <Compile Include="TwoPairAnalyzer.cs" />
+    <Compile Include="HandAnalyzers\ThreeOfAKindAnalyzer.cs" />
+    <Compile Include="HandAnalyzers\TwoPairAnalyzer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

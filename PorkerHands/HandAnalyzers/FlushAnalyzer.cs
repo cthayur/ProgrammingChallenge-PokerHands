@@ -1,13 +1,21 @@
-﻿using System;
+﻿using PorkerHands.Comparers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PorkerHands
+namespace PorkerHands.HandAnalyzers
 {
     public class FlushAnalyzer : IHandStrengthAnalyzer
     {
+        IHandTieBreakComparer highCardHandComparer;
+
+        public FlushAnalyzer(IHandTieBreakComparer highCardHandComparer)
+        {
+            this.highCardHandComparer = highCardHandComparer;
+        }
+
         public HandRankResult Analyze(IEnumerable<Card> hands)
         {
             var flushSuits = from hand in hands
@@ -30,22 +38,7 @@ namespace PorkerHands
 
         public string Compare(HandRankResult blackResult, HandRankResult whiteResult)
         {
-            var result = StaticObjects.TIE;
-
-            for(var i = 0; i < blackResult.RankList.Count(); i++)
-            {
-                var currentBlackRank = blackResult.RankList.ElementAt(i);
-                var currentWhiteRank = whiteResult.RankList.ElementAt(i);
-
-                if (currentBlackRank == currentWhiteRank)
-                    continue;
-                else if (currentBlackRank > currentWhiteRank)
-                    return StaticObjects.BLACK_WINS;
-                else
-                    return StaticObjects.WHITE_WINS;
-            }
-
-            return result;
+            return highCardHandComparer.Compare(blackResult, whiteResult);
         }
     }
 }
