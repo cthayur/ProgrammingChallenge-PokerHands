@@ -35,10 +35,21 @@ namespace PorkerHands
 
             Console.WriteLine("Avg Time: " + (totalTime / numberOfRuns));
 
+            var tasks = ProcessLines(text);
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var task in tasks)
+            {
+                sb.Append(task.Result + System.Environment.NewLine);
+            }
+
+            File.WriteAllText("output.txt", sb.ToString());
+
             Console.ReadLine();
         }
 
-        static void ProcessLines(string[] lines)
+        static Task<string>[] ProcessLines(string[] lines)
         {
             var analyzers = GetAnalyzers();
 
@@ -72,10 +83,7 @@ namespace PorkerHands
 
             Task.WaitAll(tasks);
 
-            foreach (var task in tasks)
-            {
-                //Console.WriteLine(task.Result);
-            }
+            return tasks;
         }
 
         static IEnumerable<IHandStrengthAnalyzer> GetAnalyzers()

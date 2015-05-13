@@ -66,6 +66,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="output.txt" />
     <Content Include="PokerHands-input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
