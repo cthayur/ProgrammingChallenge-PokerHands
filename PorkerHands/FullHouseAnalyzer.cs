@@ -10,11 +10,13 @@ namespace PorkerHands
     {
         IHandStrengthAnalyzer threeOfAKindAnalyzer;
         IHandStrengthAnalyzer pairAnalyzer;
+        IHandTieBreakComparer highCardComparer;
 
-        public FullHouseAnalyzer(IHandStrengthAnalyzer threeOfAKindAnalyzer, IHandStrengthAnalyzer pairAnalyzer)
+        public FullHouseAnalyzer(IHandStrengthAnalyzer threeOfAKindAnalyzer, IHandStrengthAnalyzer pairAnalyzer, IHandTieBreakComparer highCardComparer)
         {
             this.threeOfAKindAnalyzer = threeOfAKindAnalyzer;
             this.pairAnalyzer = pairAnalyzer;
+            this.highCardComparer = highCardComparer;
         }
         public HandRankResult Analyze(IEnumerable<Card> hands)
         {
@@ -39,15 +41,7 @@ namespace PorkerHands
 
         public string Compare(HandRankResult blackResult, HandRankResult whiteResult)
         {
-            var blackHighCard = blackResult.RankList.First();
-            var whiteHighCard = whiteResult.RankList.First();
-
-            if (blackHighCard == whiteHighCard)
-                return StaticObjects.TIE;
-            else if (blackHighCard > whiteHighCard)
-                return StaticObjects.BLACK_WINS;
-            else
-                return StaticObjects.WHITE_WINS;
+            return highCardComparer.Compare(blackResult, whiteResult);
         }
     }
 }
