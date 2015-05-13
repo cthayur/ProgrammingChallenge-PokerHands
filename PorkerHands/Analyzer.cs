@@ -57,7 +57,7 @@ namespace PorkerHands
             analyzers.Add(flushAnalyzer);
             analyzers.Add(straightAnalyzer);
             analyzers.Add(threeOfAKindAnalyzer);
-            analyzers.Add(new TwoPairAnalyzer(pairAnalyzer));
+            analyzers.Add(new TwoPairAnalyzer(pairAnalyzer, highCardHandTieComparer));
             analyzers.Add(pairAnalyzer);
             analyzers.Add(new HighCardAnalyzer());
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PorkerHands.Comparers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,12 @@ namespace PorkerHands.HandAnalyzers
     public class TwoPairAnalyzer : IHandStrengthAnalyzer
     {
         IHandStrengthAnalyzer pairAnalyzer;
+        IHandTieBreakComparer highCardHandComparer;
 
-        public TwoPairAnalyzer(IHandStrengthAnalyzer pairAnalyzer)
+        public TwoPairAnalyzer(IHandStrengthAnalyzer pairAnalyzer, IHandTieBreakComparer highCardHandComparer)
         {
             this.pairAnalyzer = pairAnalyzer;
+            this.highCardHandComparer = highCardHandComparer;
         }
 
         public HandRankResult Analyze(IEnumerable<Card> hands)
@@ -43,6 +46,12 @@ namespace PorkerHands.HandAnalyzers
             }
 
             return handRank;
+        }
+
+
+        public string Compare(HandRankResult blackResult, HandRankResult whiteResult)
+        {
+            return highCardHandComparer.Compare(blackResult, whiteResult);
         }
     }
 }
