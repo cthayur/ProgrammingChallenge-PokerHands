@@ -40,7 +40,15 @@ namespace PorkerHands
 
         public string Compare(HandRankResult blackResult, HandRankResult whiteResult)
         {
-            
+            var blackHighCard = blackResult.RankList.First();
+            var whiteHighCard = whiteResult.RankList.First();
+
+            if (blackHighCard == whiteHighCard)
+                return StaticObjects.TIE;
+            else if (blackHighCard > whiteHighCard)
+                return StaticObjects.BLACK_WINS;
+            else
+                return StaticObjects.WHITE_WINS;
         }
     }
 }

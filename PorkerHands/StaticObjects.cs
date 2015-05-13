@@ -10,6 +10,9 @@ namespace PorkerHands
     {
         public static Dictionary<string, int> CardRanks;
         public static HashSet<string> DistinctSuits;
+        public static string WHITE_WINS = "White Wins.";
+        public static string BLACK_WINS = "Black Wins.";
+        public static string TIE = "Tie.";
 
         static StaticObjects()
         {
