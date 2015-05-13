@@ -47,7 +47,7 @@ namespace PorkerHands
             var highCardHandTieComparer = new HighCardHandTieComparer();
             var flushAnalyzer = new FlushAnalyzer(highCardHandTieComparer);
             var straightAnalyzer = new StraightAnalyzer(highCardTieComparer);
-            var threeOfAKindAnalyzer = new ThreeOfAKindAnalyzer();
+            var threeOfAKindAnalyzer = new ThreeOfAKindAnalyzer(highCardTieComparer);
             var pairAnalyzer = new PairAnalyzer();
 
             analyzers = new List<IHandStrengthAnalyzer>();

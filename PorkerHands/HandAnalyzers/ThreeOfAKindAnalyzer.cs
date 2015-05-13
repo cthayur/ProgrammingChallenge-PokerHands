@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PorkerHands.Comparers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,13 @@ namespace PorkerHands.HandAnalyzers
 {
     public class ThreeOfAKindAnalyzer : IHandStrengthAnalyzer
     {
+        IHandTieBreakComparer highCardComparer;
+
+        public ThreeOfAKindAnalyzer(IHandTieBreakComparer highCardComparer)
+        {
+            this.highCardComparer = highCardComparer;
+        }
+
         public HandRankResult Analyze(IEnumerable<Card> hands)
         {
             var handRank = new HandRankResult();
@@ -29,7 +37,7 @@ namespace PorkerHands.HandAnalyzers
 
         public string Compare(HandRankResult blackResult, HandRankResult whiteResult)
         {
-            
+            return highCardComparer.Compare(blackResult, whiteResult);
         }
     }
 }
