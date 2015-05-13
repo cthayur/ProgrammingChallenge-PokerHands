@@ -14,8 +14,10 @@ namespace PorkerHands
         static void Main(string[] args)
         {
             var text = File.ReadAllLines("PokerHands-input.txt");
+            double totalTime = 0;
+            int numberOfRuns = 20;
 
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < numberOfRuns; i++)
             {
                 Stopwatch stopWatch = new Stopwatch();
                 stopWatch.Start();
@@ -24,14 +26,12 @@ namespace PorkerHands
 
                 stopWatch.Stop();
                 TimeSpan ts = stopWatch.Elapsed;
+                totalTime += ts.TotalMilliseconds;
 
-                Console.WriteLine(ts.TotalMilliseconds);
-
-                string elapsedTime = String.Format("{0:00}Hrs:{1:00}Mins:{2:00}Secs:{3:00}Ms",
-                                    ts.Hours, ts.Minutes, ts.Seconds,
-                                    ts.Milliseconds / 10);
-                Console.WriteLine("RunTime " + elapsedTime);
+                Console.WriteLine(ts.TotalMilliseconds + " - Run " + i);
             }
+
+            Console.WriteLine("Avg Time: " + (totalTime / numberOfRuns));
 
             Console.ReadLine();
         }

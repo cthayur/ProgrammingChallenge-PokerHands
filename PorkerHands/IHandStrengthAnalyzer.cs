@@ -9,5 +9,6 @@ namespace PorkerHands
     public interface IHandStrengthAnalyzer
     {
         HandRankResult Analyze(IEnumerable<Card> hands);
+        string Compare(HandRankResult blackResult, HandRankResult whiteResult);
     }
 }
