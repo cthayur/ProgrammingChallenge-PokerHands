@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PorkerHands.Comparers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,13 @@ namespace PorkerHands.HandAnalyzers
 {
     public class StraightAnalyzer : IHandStrengthAnalyzer
     {
+        IHandTieBreakComparer highCardComparer;
+
+        public StraightAnalyzer(IHandTieBreakComparer highCardComparer)
+        {
+            this.highCardComparer = highCardComparer;
+        }
+
         public HandRankResult Analyze(IEnumerable<Card> hands)
         {
             var isHand = hands.Zip(hands.Skip(1), (a, b) => (a.NumericCardValue + 1) == b.NumericCardValue).All(x => x);
@@ -23,15 +31,7 @@ namespace PorkerHands.HandAnalyzers
 
         public string Compare(HandRankResult blackResult, HandRankResult whiteResult)
         {
-            var blackHighCard = blackResult.RankList.First();
-            var whiteHighCard = whiteResult.RankList.First();
-
-            if (blackHighCard == whiteHighCard)
-                return StaticObjects.TIE;
-            else if (blackHighCard > whiteHighCard)
-                return StaticObjects.BLACK_WINS;
-            else
-                return StaticObjects.WHITE_WINS;
+            return highCardComparer.Compare(blackResult, whiteResult);
         }
     }
 }

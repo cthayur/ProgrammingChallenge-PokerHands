@@ -43,15 +43,22 @@ namespace PorkerHands
 
         private void SetUpAnalyzers()
         {
+            var highCardTieComparer = new HighCardTieComparer();
+            var highCardHandTieComparer = new HighCardHandTieComparer();
+            var flushAnalyzer = new FlushAnalyzer(highCardHandTieComparer);
+            var straightAnalyzer = new StraightAnalyzer(highCardTieComparer);
+            var threeOfAKindAnalyzer = new ThreeOfAKindAnalyzer();
+            var pairAnalyzer = new PairAnalyzer();
+
             analyzers = new List<IHandStrengthAnalyzer>();
-            analyzers.Add(new StraightFlushAnalyzer(new FlushAnalyzer(new HighCardHandTieComparer()), new StraightAnalyzer(), new HighCardTieComparer()));
-            analyzers.Add(new FourOfAKindAnalyzer(new HighCardTieComparer()));
-            analyzers.Add(new FullHouseAnalyzer(new ThreeOfAKindAnalyzer(), new PairAnalyzer(), new HighCardTieComparer()));
-            analyzers.Add(new FlushAnalyzer(new HighCardHandTieComparer()));
-            analyzers.Add(new StraightAnalyzer());
-            analyzers.Add(new ThreeOfAKindAnalyzer());
-            analyzers.Add(new TwoPairAnalyzer(new PairAnalyzer()));
-            analyzers.Add(new PairAnalyzer());
+            analyzers.Add(new StraightFlushAnalyzer(flushAnalyzer, straightAnalyzer, highCardTieComparer));
+            analyzers.Add(new FourOfAKindAnalyzer(highCardTieComparer));
+            analyzers.Add(new FullHouseAnalyzer(threeOfAKindAnalyzer, pairAnalyzer, highCardTieComparer));
+            analyzers.Add(flushAnalyzer);
+            analyzers.Add(straightAnalyzer);
+            analyzers.Add(threeOfAKindAnalyzer);
+            analyzers.Add(new TwoPairAnalyzer(pairAnalyzer));
+            analyzers.Add(pairAnalyzer);
             analyzers.Add(new HighCardAnalyzer());
         }
     }
