@@ -1,0 +1,7 @@
+C:\Users\Chetan\documents\visual studio 2013\Projects\PorkerHands\PorkerHands\bin\Debug\PorkerHands.exe.config
+C:\Users\Chetan\documents\visual studio 2013\Projects\PorkerHands\PorkerHands\bin\Debug\PorkerHands.exe
+C:\Users\Chetan\documents\visual studio 2013\Projects\PorkerHands\PorkerHands\bin\Debug\PorkerHands.pdb
+C:\Users\Chetan\documents\visual studio 2013\Projects\PorkerHands\PorkerHands\obj\Debug\PorkerHands.exe
+C:\Users\Chetan\documents\visual studio 2013\Projects\PorkerHands\PorkerHands\obj\Debug\PorkerHands.pdb
+C:\Users\Chetan\documents\visual studio 2013\Projects\PorkerHands\PorkerHands\bin\Debug\PokerHands-input.txt
+C:\Users\Chetan\documents\visual studio 2013\Projects\PorkerHands\PorkerHands\obj\Debug\PorkerHands.csprojResolveAssemblyReference.cache
