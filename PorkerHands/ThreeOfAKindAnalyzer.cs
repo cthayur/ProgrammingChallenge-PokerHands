@@ -25,5 +25,11 @@ namespace PorkerHands
 
             return handRank;
         }
+
+
+        public string Compare(HandRankResult blackResult, HandRankResult whiteResult)
+        {
+            
+        }
     }
 }

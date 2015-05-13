@@ -42,8 +42,8 @@ namespace PorkerHands
         private void SetUpAnalyzers()
         {
             analyzers = new List<IHandStrengthAnalyzer>();
-            analyzers.Add(new StraightFlushAnalyzer(new FlushAnalyzer(), new StraightAnalyzer()));
-            analyzers.Add(new FourOfAKindAnalyzer());
+            analyzers.Add(new StraightFlushAnalyzer(new FlushAnalyzer(), new StraightAnalyzer(), new HighCardTieComparer()));
+            analyzers.Add(new FourOfAKindAnalyzer(new HighCardTieComparer()));
             analyzers.Add(new FullHouseAnalyzer(new ThreeOfAKindAnalyzer(), new PairAnalyzer()));
             analyzers.Add(new FlushAnalyzer());
             analyzers.Add(new StraightAnalyzer());
