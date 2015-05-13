@@ -48,7 +48,7 @@ namespace PorkerHands
             var flushAnalyzer = new FlushAnalyzer(highCardHandTieComparer);
             var straightAnalyzer = new StraightAnalyzer(highCardTieComparer);
             var threeOfAKindAnalyzer = new ThreeOfAKindAnalyzer(highCardTieComparer);
-            var pairAnalyzer = new PairAnalyzer();
+            var pairAnalyzer = new PairAnalyzer(highCardHandTieComparer);
 
             analyzers = new List<IHandStrengthAnalyzer>();
             analyzers.Add(new StraightFlushAnalyzer(flushAnalyzer, straightAnalyzer, highCardTieComparer));
@@ -59,7 +59,7 @@ namespace PorkerHands
             analyzers.Add(threeOfAKindAnalyzer);
             analyzers.Add(new TwoPairAnalyzer(pairAnalyzer, highCardHandTieComparer));
             analyzers.Add(pairAnalyzer);
-            analyzers.Add(new HighCardAnalyzer());
+            analyzers.Add(new HighCardAnalyzer(highCardHandTieComparer));
         }
     }
 }
